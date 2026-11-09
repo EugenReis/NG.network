@@ -1,0 +1,1003 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Spedition Lernkarten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream-50: #ffffff;
+    --cream-100: #f1faf6;
+    --cream-200: #d8f1fb;
+    --terracotta-100: #cdf5dc;
+    --terracotta-200: #9de9bd;
+    --terracotta-400: #35bd73;
+    --terracotta-500: #11ab49;
+    --terracotta-600: #0c8f3c;
+    --terracotta-700: #0a7232;
+    --sage-100: #e6f2d2;
+    --sage-400: #a0d158;
+    --sage-500: #8fc54b;
+    --sage-700: #57802c;
+    --sage-800: #456526;
+    --amber-100: #faedc9;
+    --amber-500: #d88b1e;
+    --amber-600: #bb6a17;
+    --amber-700: #984d17;
+    --red-100: #fde2e2;
+    --red-500: #d64545;
+    --red-600: #b93333;
+    --red-700: #942929;
+    --ink-50: #f5f6f6;
+    --ink-100: #e4e7e6;
+    --ink-400: #888f8c;
+    --ink-600: #4b524f;
+    --ink-800: #222625;
+    --ink-900: #000000;
+
+    --bg: var(--cream-50);
+    --surface: #ffffff;
+    --surface-alt: var(--cream-100);
+    --text: var(--ink-900);
+    --text-muted: var(--ink-400);
+    --border: var(--ink-100);
+    --accent: var(--terracotta-500);
+    --accent-strong: var(--terracotta-600);
+    --accent-soft: var(--terracotta-100);
+    --success: var(--sage-500);
+    --success-soft: var(--sage-100);
+    --success-text: var(--sage-800);
+    --warn: var(--amber-500);
+    --warn-soft: var(--amber-100);
+    --warn-text: var(--amber-700);
+    --danger: var(--red-500);
+    --danger-strong: var(--red-600);
+    --danger-soft: var(--red-100);
+    --shadow-soft: 0 2px 10px -2px rgba(0,0,0,.08), 0 8px 24px -8px rgba(0,0,0,.10);
+    --shadow-card: 0 4px 20px -4px rgba(0,0,0,.14);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10140f;
+      --surface: #1a2018;
+      --surface-alt: #161c14;
+      --text: #eef3ea;
+      --text-muted: #93a08c;
+      --border: #2c352a;
+      --accent: #35bd73;
+      --accent-strong: #5fd394;
+      --accent-soft: #15301f;
+      --success: #a0d158;
+      --success-soft: #2a3317;
+      --success-text: #d7e8ae;
+      --warn: #e5a72f;
+      --warn-soft: #3a2e17;
+      --warn-text: #f0c778;
+      --danger: #e87171;
+      --danger-strong: #f29b9b;
+      --danger-soft: #3a1f1f;
+      --shadow-soft: 0 2px 10px -2px rgba(0,0,0,.35);
+      --shadow-card: 0 4px 24px -4px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10140f;
+    --surface: #1a2018;
+    --surface-alt: #161c14;
+    --text: #eef3ea;
+    --text-muted: #93a08c;
+    --border: #2c352a;
+    --accent: #35bd73;
+    --accent-strong: #5fd394;
+    --accent-soft: #15301f;
+    --success: #a0d158;
+    --success-soft: #2a3317;
+    --success-text: #d7e8ae;
+    --warn: #e5a72f;
+    --warn-soft: #3a2e17;
+    --warn-text: #f0c778;
+    --danger: #e87171;
+    --danger-strong: #f29b9b;
+    --danger-soft: #3a1f1f;
+    --shadow-soft: 0 2px 10px -2px rgba(0,0,0,.35);
+    --shadow-card: 0 4px 24px -4px rgba(0,0,0,.5);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', system-ui, sans-serif;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1, h2, h3, .display { font-family: 'Fredoka', system-ui, sans-serif; }
+
+  #app {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+  }
+
+  .topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .brand-badge {
+    height: 32px; padding: 5px 10px; border-radius: 10px; background: #fff;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow: var(--shadow-soft);
+  }
+  .brand-badge img { height: 100%; width: auto; display:block; }
+  .brand-name { font-family:'Fredoka'; font-weight:600; font-size:15px; }
+  .streak-pill {
+    display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px;
+    background: var(--warn-soft); color: var(--warn-text); font-family:'Fredoka'; font-weight:600; font-size:14px;
+  }
+  .streak-pill.inactive { background: var(--surface-alt); color: var(--text-muted); }
+
+  main { flex:1; padding: 4px 20px 24px; display:flex; flex-direction:column; gap:20px; }
+
+  .card { background: var(--surface); border-radius: 24px; padding: 20px; box-shadow: var(--shadow-soft); }
+  .card.hero { box-shadow: var(--shadow-card); display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .hero-label { font-size:13px; color:var(--text-muted); margin:0 0 4px; }
+  .hero-num { font-family:'Fredoka'; font-weight:700; font-size:34px; color:var(--accent); margin:0; line-height:1; }
+  .hero-sub { font-size:13px; color:var(--text-muted); margin:6px 0 14px; }
+
+  .btn {
+    font-family:'Fredoka'; font-weight:600; font-size:14px; border:none; cursor:pointer;
+    border-radius:16px; padding:13px 20px; display:inline-flex; align-items:center; justify-content:center;
+    transition: transform .12s ease, background .15s ease; text-decoration:none;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { background: var(--accent); color:#fff; box-shadow: var(--shadow-soft); }
+  .btn-primary:hover { background: var(--accent-strong); }
+  .btn-primary:disabled { opacity:.45; cursor:default; }
+  .btn-secondary { background: var(--success-soft); color: var(--success-text); }
+  .btn-ghost { background: var(--surface-alt); color: var(--text-muted); }
+  .btn-danger { background: var(--danger-soft); color: var(--danger-strong); }
+  .btn-block { width:100%; }
+  .btn-dark { background: var(--ink-900); color:#fff; }
+  @media (prefers-color-scheme: dark) { .btn-dark { background:#3c332a; } }
+
+  .ring-wrap { position:relative; width:104px; height:104px; flex-shrink:0; }
+  .ring-wrap svg { transform: rotate(-90deg); }
+  .ring-label { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ring-num { font-family:'Fredoka'; font-weight:700; font-size:17px; }
+  .ring-sub { font-size:10px; color:var(--text-muted); }
+
+  .section-title { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .section-title h2 { font-size:15px; font-weight:600; margin:0; color: var(--text-muted); }
+  .xp-tag { font-family:'Fredoka'; font-weight:600; color: var(--warn-text); font-size:14px; }
+
+  .badges { display:flex; flex-wrap:wrap; gap:8px; }
+  .badge-chip { background: var(--warn-soft); color: var(--warn-text); font-size:12px; font-weight:700; padding:7px 12px; border-radius:999px; }
+
+  .topic-row { display:flex; flex-direction:column; gap:8px; padding:12px; margin:0 -12px; border-radius:16px; text-decoration:none; color:inherit; cursor:pointer; }
+  .topic-row:hover { background: var(--surface-alt); }
+  .topic-row-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .topic-name { font-weight:700; font-size:15px; }
+  .topic-meta { font-size:12px; color: var(--text-muted); white-space:nowrap; display:flex; align-items:center; gap:6px; }
+  .due-chip { background: var(--accent-soft); color: var(--accent-strong); font-weight:700; border-radius:999px; padding:2px 8px; }
+  .progress-bar { height:10px; border-radius:999px; background: var(--border); overflow:hidden; }
+  .progress-bar > div { height:100%; background: var(--success); border-radius:999px; transition: width .4s ease; }
+
+  .topic-tree-card { padding: 10px; }
+  details.topic-node { border-radius:16px; padding: 8px 10px; }
+  details.topic-node > summary { list-style:none; cursor:pointer; display:flex; align-items:flex-start; gap:8px; }
+  details.topic-node > summary::-webkit-details-marker { display:none; }
+  .chevron { flex-shrink:0; margin-top:6px; transition: transform .15s ease; color: var(--text-muted); }
+  details[open] > summary .chevron { transform: rotate(90deg); }
+  .topic-children { margin-top:4px; padding-left:16px; border-left:2px solid var(--surface-alt); display:flex; flex-direction:column; gap:2px; }
+  .topic-leaf { border-radius:16px; padding:8px 10px; }
+
+  .review-top { display:flex; align-items:center; gap:12px; }
+  .icon-btn { width:36px; height:36px; border-radius:999px; background: var(--surface); box-shadow: var(--shadow-soft); display:flex; align-items:center; justify-content:center; border:none; cursor:pointer; color:var(--text-muted); flex-shrink:0; }
+  .review-progress { flex:1; height:10px; border-radius:999px; background: var(--border); overflow:hidden; }
+  .review-progress > div { height:100%; background: var(--terracotta-400); border-radius:999px; transition:width .3s ease; }
+  .review-count { font-size:12px; font-weight:700; color: var(--text-muted); white-space:nowrap; }
+
+  .perspective { perspective: 1400px; -webkit-perspective: 1400px; }
+  .flip-card {
+    position:relative; min-height:380px; border-radius:24px; background:var(--surface);
+    box-shadow: var(--shadow-card); cursor:pointer;
+    transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+    transition: transform .5s cubic-bezier(.4,.2,.2,1); width:100%;
+  }
+  .flip-card.revealed { transform: rotateY(180deg); -webkit-transform: rotateY(180deg); cursor:default; }
+  .flip-face {
+    position:absolute; inset:0; border-radius:24px; background:var(--surface);
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .flip-face.back { transform: rotateY(180deg); -webkit-transform: rotateY(180deg); }
+  .flip-face-inner { flex:1; display:flex; flex-direction:column; padding:24px; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+  .topic-tag { align-self:flex-start; background: var(--success-soft); color: var(--success-text); font-size:12px; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:12px; }
+  .topic-tag.answer { background: var(--accent-soft); color: var(--accent-strong); }
+  .q-text { font-family:'Fredoka'; font-weight:600; font-size:19px; text-align:center; flex:1; display:flex; align-items:center; justify-content:center; line-height:1.35; }
+  .tap-hint { text-align:center; font-size:12px; color:var(--text-muted); margin-top:12px; }
+  .a-text { font-family:'Fredoka'; font-weight:600; font-size:17px; line-height:1.35; }
+  .elab-text { font-size:14px; line-height:1.6; color: var(--text-muted); margin-top:10px; }
+  .img-wrap { margin-top:14px; border-radius:16px; overflow:hidden; background:var(--surface-alt); }
+  .img-wrap img { width:100%; display:block; object-fit:contain; max-height:180px; }
+  .img-credit { font-size:10px; color: var(--text-muted); margin-top:6px; }
+
+  .hotspot-card { border-radius:24px; background:var(--surface); box-shadow: var(--shadow-card); padding:20px; display:flex; flex-direction:column; gap:14px; width:100%; }
+  .hotspot-q { font-family:'Fredoka'; font-weight:600; font-size:16px; }
+  .hotspot-img-wrap { position:relative; width:100%; border-radius:16px; overflow:hidden; background:var(--surface-alt); }
+  .hotspot-img-wrap img { display:block; width:100%; height:auto; }
+  .hotspot-marker { position:absolute; width:20px; height:20px; transform:translate(-50%,-50%); }
+  .hotspot-marker .ping { position:absolute; inset:0; border-radius:999px; background: rgba(204,106,61,.65); animation: ping 1.4s cubic-bezier(0,0,.2,1) infinite; }
+  .hotspot-marker .dot { position:relative; width:20px; height:20px; border-radius:999px; background:var(--accent); border:2px solid #fff; box-shadow: var(--shadow-soft); }
+  @keyframes ping { 75%,100% { transform: scale(2.2); opacity:0; } }
+  .choice-list { display:flex; flex-direction:column; gap:8px; }
+  .choice-btn { text-align:left; padding:13px 16px; border-radius:16px; border:2px solid var(--border); background:var(--surface-alt); font-family:'Nunito'; font-weight:700; font-size:14px; color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:space-between; }
+  .choice-btn.correct { border-color: var(--success); background: var(--success-soft); color: var(--success-text); }
+  .choice-btn.wrong { border-color: var(--red-500); background: var(--danger-soft); color: var(--danger-strong); }
+  .choice-btn:disabled { cursor:default; }
+
+  .rating-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:8px; }
+  .rate-btn { border:none; border-radius:16px; padding:15px 4px; font-family:'Fredoka'; font-weight:700; font-size:13px; color:#fff; cursor:pointer; box-shadow: var(--shadow-soft); }
+  .rate-btn:active { transform: scale(.95); }
+  .rate-again { background: var(--red-500); }
+  .rate-hard { background: var(--amber-500); }
+  .rate-good { background: var(--sage-500); }
+  .rate-easy { background: var(--sage-700); }
+
+  .end-screen { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding: 40px 20px; }
+  .end-emoji { font-size:48px; }
+  .end-title { font-family:'Fredoka'; font-weight:700; font-size:22px; }
+  .end-sub { color:var(--text-muted); font-size:15px; }
+
+  .bottomnav {
+    position: sticky; bottom: 0; z-index:10;
+    display:flex; border-top:1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(6px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .nav-btn { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:11px 4px 9px; background:none; border:none; cursor:pointer; font-family:'Nunito'; font-weight:700; font-size:11px; color: var(--text-muted); }
+  .nav-btn.active { color: var(--accent); }
+
+  .type-card { border-radius:24px; background:var(--surface); box-shadow: var(--shadow-card); padding:20px; display:flex; flex-direction:column; gap:14px; width:100%; }
+  .type-q { font-family:'Fredoka'; font-weight:600; font-size:18px; line-height:1.35; }
+  .type-input { font-family:'Nunito'; font-size:16px; border:2px solid var(--border); background:var(--surface-alt); color:var(--text); border-radius:16px; padding:13px 16px; outline:none; }
+  .type-input:focus { border-color: var(--accent); }
+  .diff-label { font-size:12px; font-weight:700; color:var(--text-muted); }
+  .diff-text { font-family:'Fredoka'; font-size:18px; line-height:1.5; }
+  .diff-del { color: var(--danger-strong); text-decoration: line-through; text-decoration-thickness:2px; }
+  .diff-ins { color: var(--success); text-decoration: underline; text-decoration-thickness:2px; text-underline-offset:2px; }
+  .diff-exact { font-size:12px; font-weight:700; color: var(--success); }
+
+  .settings-card { display:flex; flex-direction:column; gap:18px; }
+  .field label { display:block; font-size:13px; font-weight:600; color: var(--text-muted); margin-bottom:6px; }
+  .field input { width:100%; font-family:'Nunito'; font-size:16px; border:1px solid var(--border); background:var(--surface-alt); color:var(--text); border-radius:12px; padding:12px 14px; outline:none; }
+  .field input:focus { border-color: var(--accent); }
+  .field-hint { font-size:12px; color: var(--text-muted); margin-top:6px; }
+  .danger-title { font-size:14px; font-weight:700; color: var(--danger-strong); margin:0 0 4px; }
+  .saved-tag { font-size:13px; font-weight:700; color: var(--success); }
+
+  .loading-screen { flex:1; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:14px; }
+  a { color: inherit; }
+</style>
+<div id="app">
+  <div class="loading-screen">Lädt…</div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE = {
+    progress: "spedition-lk:progress",
+    stats: "spedition-lk:stats",
+    log: "spedition-lk:log"
+  };
+
+  function safeGet(key, fallback) {
+    try {
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (e) { return fallback; }
+  }
+  function safeSet(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+  }
+
+  function readProgress() { return safeGet(STORAGE.progress, {}); }
+  function writeProgress(p) { safeSet(STORAGE.progress, p); }
+  var DEFAULT_STATS = {
+    current_streak: 0, longest_streak: 0, last_active_date: null, total_xp: 0, daily_goal: 20, session_size: 40
+  };
+  function readStats() {
+    var stored = safeGet(STORAGE.stats, DEFAULT_STATS);
+    var merged = {};
+    for (var k in DEFAULT_STATS) merged[k] = DEFAULT_STATS[k];
+    for (var k2 in stored) merged[k2] = stored[k2];
+    return merged;
+  }
+  function writeStats(s) { safeSet(STORAGE.stats, s); }
+  function readLog() { return safeGet(STORAGE.log, []); }
+  function appendLog(iso) { var log = readLog(); log.push(iso); safeSet(STORAGE.log, log); }
+  function totalReviewed() { return readLog().length; }
+  function reviewedToday() {
+    var start = new Date(); start.setHours(0,0,0,0);
+    return readLog().filter(function (iso) { return new Date(iso) >= start; }).length;
+  }
+  function resetProgress() {
+    try { localStorage.removeItem(STORAGE.progress); } catch (e) {}
+    try { localStorage.removeItem(STORAGE.log); } catch (e) {}
+    var stats = readStats();
+    stats.current_streak = 0; stats.longest_streak = 0; stats.last_active_date = null; stats.total_xp = 0;
+    writeStats(stats);
+  }
+
+  // character-level LCS diff, case-insensitive matching with original casing preserved
+  function diffChars(input, target) {
+    var a = (input || "").trim(), b = (target || "").trim();
+    var al = a.toLowerCase(), bl = b.toLowerCase();
+    var m = a.length, n = b.length;
+    var dp = [];
+    for (var i = 0; i <= m; i++) { dp.push(new Array(n + 1).fill(0)); }
+    for (var i = 1; i <= m; i++) {
+      for (var j = 1; j <= n; j++) {
+        dp[i][j] = al[i-1] === bl[j-1] ? dp[i-1][j-1] + 1 : Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    var ops = [], i = m, j = n;
+    while (i > 0 || j > 0) {
+      if (i > 0 && j > 0 && al[i-1] === bl[j-1]) { ops.push({ type: "equal", ch: b[j-1] }); i--; j--; }
+      else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) { ops.push({ type: "insert", ch: b[j-1] }); j--; }
+      else { ops.push({ type: "delete", ch: a[i-1] }); i--; }
+    }
+    ops.reverse();
+    var runs = [];
+    ops.forEach(function (op) {
+      var last = runs[runs.length - 1];
+      if (last && last.type === op.type) last.value += op.ch;
+      else runs.push({ type: op.type, value: op.ch });
+    });
+    return runs;
+  }
+  function isExactMatch(input, target) {
+    return (input || "").trim().toLowerCase() === (target || "").trim().toLowerCase();
+  }
+
+  var XP_BY_RATING = { nochmal: 2, schwer: 5, gut: 8, leicht: 10 };
+  var MIN_EASE = 1.3, MAX_EASE = 3.0, AGAIN_DAYS = 1/144;
+  function clampEase(v) { return Math.min(MAX_EASE, Math.max(MIN_EASE, v)); }
+  function addDays(date, days) { return new Date(date.getTime() + days*86400000); }
+
+  function scheduleNextReview(state, rating, now) {
+    now = now || new Date();
+    var ease = state.ease_factor || 2.5;
+    var reps = state.repetitions || 0;
+    if (rating === "nochmal") {
+      return { ease_factor: clampEase(ease-0.2), interval_days: AGAIN_DAYS, repetitions: 0, due_date: addDays(now, AGAIN_DAYS) };
+    }
+    if (rating === "schwer") {
+      var ne = clampEase(ease-0.15);
+      var iv = reps === 0 ? 1 : Math.max(1, Math.round(state.interval_days*1.2));
+      return { ease_factor: ne, interval_days: iv, repetitions: reps+1, due_date: addDays(now, iv) };
+    }
+    if (rating === "gut") {
+      var ne2 = clampEase(ease);
+      var iv2 = reps === 0 ? 1 : (reps === 1 ? 6 : Math.round(state.interval_days*ne2));
+      return { ease_factor: ne2, interval_days: iv2, repetitions: reps+1, due_date: addDays(now, iv2) };
+    }
+    var ne3 = clampEase(ease+0.15);
+    var iv3 = reps === 0 ? 3 : (reps === 1 ? 8 : Math.round(state.interval_days*ne3*1.3));
+    return { ease_factor: ne3, interval_days: iv3, repetitions: reps+1, due_date: addDays(now, iv3) };
+  }
+  function requeueOffset(rating) {
+    if (rating === "nochmal") return 3;
+    if (rating === "schwer") return 6;
+    return null;
+  }
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i=a.length-1; i>0; i--) { var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
+  }
+  function interleave(cards) {
+    var byTopic = {};
+    var order = [];
+    cards.forEach(function (c) {
+      if (!byTopic[c.topic_id]) { byTopic[c.topic_id] = []; order.push(c.topic_id); }
+      byTopic[c.topic_id].push(c);
+    });
+    order.forEach(function (t) { byTopic[t] = shuffle(byTopic[t]); });
+    var result = [], remaining = cards.length, i = 0;
+    while (remaining > 0) {
+      var t = order[i % order.length];
+      if (byTopic[t].length) { result.push(byTopic[t].shift()); remaining--; }
+      i++;
+    }
+    return result;
+  }
+  function updateStreak(prev, now) {
+    now = now || new Date();
+    var today = now.toISOString().slice(0,10);
+    if (!prev.last_active_date) {
+      return { current_streak: 1, longest_streak: Math.max(1, prev.longest_streak), last_active_date: today };
+    }
+    var gap = Math.round((new Date(today) - new Date(prev.last_active_date)) / 86400000);
+    if (gap === 0) return { current_streak: prev.current_streak, longest_streak: prev.longest_streak, last_active_date: today };
+    if (gap === 1) {
+      var n = prev.current_streak+1;
+      return { current_streak: n, longest_streak: Math.max(n, prev.longest_streak), last_active_date: today };
+    }
+    return { current_streak: 1, longest_streak: Math.max(1, prev.longest_streak), last_active_date: today };
+  }
+  var BADGES = [
+    { id:"cards_50", label:"50 Karten gelernt", test:function(t,s){ return t>=50; } },
+    { id:"cards_200", label:"200 Karten gelernt", test:function(t,s){ return t>=200; } },
+    { id:"cards_1000", label:"1000 Karten gelernt", test:function(t,s){ return t>=1000; } },
+    { id:"streak_3", label:"3-Tage-Streak", test:function(t,s){ return s>=3; } },
+    { id:"streak_7", label:"7-Tage-Streak", test:function(t,s){ return s>=7; } },
+    { id:"streak_30", label:"30-Tage-Streak", test:function(t,s){ return s>=30; } }
+  ];
+  function earnedBadges(total, longestStreak) {
+    return BADGES.filter(function (b) { return b.test(total, longestStreak); });
+  }
+
+  var DATA = null, TREE = null;
+
+  function buildTree(topics) {
+    var byId = {};
+    topics.forEach(function (t) { byId[t.id] = { id:t.id, name:t.name, parent:t.parent, sort_order:t.sort_order, children:[] }; });
+    var roots = [];
+    topics.forEach(function (t) {
+      var node = byId[t.id];
+      if (t.parent && byId[t.parent]) byId[t.parent].children.push(node);
+      else roots.push(node);
+    });
+    roots.sort(function(a,b){return a.sort_order-b.sort_order;});
+    function sortChildren(n){ n.children.sort(function(a,b){return a.sort_order-b.sort_order;}); n.children.forEach(sortChildren); }
+    roots.forEach(sortChildren);
+    return roots;
+  }
+  function collectSubtreeIds(node) {
+    var ids = [node.id];
+    node.children.forEach(function (c) { ids = ids.concat(collectSubtreeIds(c)); });
+    return ids;
+  }
+  function statsForNode(node, progress, now) {
+    var ids = {}; collectSubtreeIds(node).forEach(function(id){ ids[id]=true; });
+    var cardsIn = DATA.cards.filter(function (c) { return ids[c.topic_id]; });
+    var learned = 0, due = 0;
+    cardsIn.forEach(function (c) {
+      var p = progress[c.id];
+      if (!p) { due++; return; }
+      if (p.review_count > 0) learned++;
+      if (new Date(p.due_date) <= now) due++;
+    });
+    return { total: cardsIn.length, learned: learned, due: due };
+  }
+  function allNodeStats(tree, progress) {
+    var now = new Date(), stats = {};
+    function walk(nodes) {
+      nodes.forEach(function (n) { stats[n.id] = statsForNode(n, progress, now); walk(n.children); });
+    }
+    walk(tree);
+    return stats;
+  }
+  function findNode(nodes, id) {
+    for (var i=0;i<nodes.length;i++) {
+      if (nodes[i].id === id) return nodes[i];
+      var f = findNode(nodes[i].children, id);
+      if (f) return f;
+    }
+    return null;
+  }
+  function flattenNames(nodes, map) {
+    nodes.forEach(function (n) { map[n.id] = n.name; flattenNames(n.children, map); });
+  }
+  function getDueCards(topicIds, limit) {
+    var idSet = {}; topicIds.forEach(function(t){idSet[t]=true;});
+    var progress = readProgress(), now = new Date();
+    var due = [], fresh = [];
+    DATA.cards.filter(function(c){return idSet[c.topic_id];}).forEach(function (c) {
+      var p = progress[c.id];
+      if (!p) { fresh.push(withProgress(c, null)); }
+      else if (new Date(p.due_date) <= now) { due.push(withProgress(c, p)); }
+    });
+    return due.concat(fresh).slice(0, limit || 40);
+  }
+  function withProgress(card, p) {
+    var copy = {}; for (var k in card) copy[k] = card[k];
+    copy.progress = p ? { ease_factor:p.ease_factor, interval_days:p.interval_days, repetitions:p.repetitions, review_count:p.review_count } : null;
+    return copy;
+  }
+  function rateCard(card, rating) {
+    var progress = readProgress();
+    var state = {
+      ease_factor: card.progress ? card.progress.ease_factor : 2.5,
+      interval_days: card.progress ? card.progress.interval_days : 0,
+      repetitions: card.progress ? card.progress.repetitions : 0
+    };
+    var result = scheduleNextReview(state, rating);
+    var nextCount = (card.progress ? card.progress.review_count : 0) + 1;
+    progress[card.id] = {
+      ease_factor: result.ease_factor, interval_days: result.interval_days, repetitions: result.repetitions,
+      due_date: result.due_date.toISOString(), review_count: nextCount
+    };
+    writeProgress(progress);
+    appendLog(new Date().toISOString());
+    var xp = XP_BY_RATING[rating];
+    var stats = readStats();
+    stats.total_xp += xp;
+    writeStats(stats);
+    return { xpGained: xp, progress: { ease_factor: result.ease_factor, interval_days: result.interval_days, repetitions: result.repetitions, review_count: nextCount } };
+  }
+  function undoCard(cardId, previousProgress, xpGained) {
+    var progress = readProgress();
+    if (previousProgress) {
+      // the card was due, so its previous due_date was <= now by definition — safe to restore to "now"
+      progress[cardId] = {
+        ease_factor: previousProgress.ease_factor, interval_days: previousProgress.interval_days,
+        repetitions: previousProgress.repetitions, review_count: previousProgress.review_count,
+        due_date: new Date().toISOString()
+      };
+    } else {
+      delete progress[cardId];
+    }
+    writeProgress(progress);
+    var log = readLog(); log.pop(); safeSet(STORAGE.log, log);
+    var stats = readStats();
+    stats.total_xp -= xpGained;
+    writeStats(stats);
+  }
+  function bumpStreak() {
+    var stats = readStats();
+    var next = updateStreak(stats);
+    if (next.last_active_date !== stats.last_active_date) {
+      stats.current_streak = next.current_streak; stats.longest_streak = next.longest_streak; stats.last_active_date = next.last_active_date;
+      writeStats(stats);
+    }
+  }
+
+  var el = document.getElementById("app");
+  var route = "dashboard";
+  var routeParam = null;
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  function ringSvg(progress, size, stroke) {
+    var r = (size-stroke)/2, c = 2*Math.PI*r, p = Math.min(1, Math.max(0, progress));
+    return '<svg width="'+size+'" height="'+size+'">' +
+      '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="var(--accent-soft)" stroke-width="'+stroke+'"/>' +
+      '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="var(--accent)" stroke-width="'+stroke+'" stroke-linecap="round" stroke-dasharray="'+c+'" stroke-dashoffset="'+(c*(1-p))+'" style="transition: stroke-dashoffset .5s ease"/>' +
+    '</svg>';
+  }
+
+  function renderTopbar() {
+    var stats = readStats();
+    var active = stats.current_streak > 0;
+    return '<div class="topbar">' +
+      '<div class="brand"><div class="brand-badge"><img src="ng-logo.jpg" alt="NG.network" width="371" height="71"></div><div class="brand-name">Spedition Lernkarten</div></div>' +
+      '<div class="streak-pill' + (active ? "" : " inactive") + '">&#128293; ' + stats.current_streak + '</div>' +
+    '</div>';
+  }
+
+  function renderBottomNav() {
+    function item(r, label) {
+      return '<button class="nav-btn' + (route === r ? " active" : "") + '" data-nav="' + r + '">' + label + '</button>';
+    }
+    return '<div class="bottomnav">' + item("dashboard", "Start") + item("topics", "Themen") + item("settings", "Einstellungen") + '</div>';
+  }
+
+  function renderDashboard() {
+    var progress = readProgress();
+    var stats = readStats();
+    var nodeStats = allNodeStats(TREE, progress);
+    var totalDue = TREE.reduce(function (sum, t) { return sum + (nodeStats[t.id] ? nodeStats[t.id].due : 0); }, 0);
+    var doneToday = reviewedToday();
+    var badges = earnedBadges(totalReviewed(), stats.longest_streak);
+
+    var html = '<div class="card hero">' +
+      '<div><p class="hero-label">Heute fällig</p><p class="hero-num">' + totalDue + '</p>' +
+      '<p class="hero-sub">' + (totalDue > 0 ? "Karten warten auf dich" : "Alles gelernt – stark!") + '</p>' +
+      '<button class="btn btn-primary" data-start-review="all" ' + (totalDue === 0 ? "disabled" : "") + '>Jetzt lernen</button></div>' +
+      '<div class="ring-wrap">' + ringSvg(stats.daily_goal > 0 ? doneToday/stats.daily_goal : 0, 104, 11) +
+      '<div class="ring-label"><span class="ring-num">' + doneToday + '/' + stats.daily_goal + '</span><span class="ring-sub">Tagesziel</span></div></div>' +
+    '</div>';
+
+    if (badges.length) {
+      html += '<div class="card"><div class="section-title"><h2>Deine Abzeichen</h2></div><div class="badges">' +
+        badges.map(function (b) { return '<span class="badge-chip">' + esc(b.label) + '</span>'; }).join("") +
+      '</div></div>';
+    }
+
+    html += '<div class="card"><div class="section-title"><h2>Fortschritt pro Thema</h2><span class="xp-tag">' + stats.total_xp + ' XP</span></div>';
+    TREE.forEach(function (t) {
+      var s = nodeStats[t.id] || { total:0, learned:0, due:0 };
+      html += '<div class="topic-row" data-start-review="' + t.id + '">' +
+        '<div class="topic-row-top"><span class="topic-name">' + esc(t.name) + '</span>' +
+        '<span class="topic-meta">' + s.learned + '/' + s.total + ' gelernt' + (s.due>0 ? ' <span class="due-chip">'+s.due+' fällig</span>' : '') + '</span></div>' +
+        '<div class="progress-bar"><div style="width:' + (s.total ? (s.learned/s.total*100) : 0) + '%"></div></div>' +
+      '</div>';
+    });
+    html += '</div>';
+    return html;
+  }
+
+  function topicNodeHtml(node, stats, depth) {
+    var s = stats[node.id] || { total:0, learned:0, due:0 };
+    var row = '<div class="topic-row-top"><span class="topic-name" style="font-size:' + (depth===0?15:14) + 'px;font-weight:' + (depth===0?700:600) + '">' + esc(node.name) + '</span>' +
+      '<span class="topic-meta">' + (s.total ? s.learned+'/'+s.total : "keine Karten") + (s.due>0 ? ' <span class="due-chip">'+s.due+'</span>' : '') + '</span></div>' +
+      (s.total ? '<div class="progress-bar" style="margin-top:6px"><div style="width:' + (s.learned/s.total*100) + '%"></div></div>' : '');
+
+    if (!node.children.length) {
+      return '<div class="topic-leaf" data-start-review="' + node.id + '">' + row + '</div>';
+    }
+    var childrenHtml = node.children.map(function (c) { return topicNodeHtml(c, stats, depth+1); }).join("");
+    return '<details class="topic-node"' + (depth===0 ? " open" : "") + '>' +
+      '<summary><svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:4px"><path d="M9 6l6 6-6 6"/></svg>' +
+      '<div class="topic-row" data-start-review="' + node.id + '" style="flex:1;padding:0;margin:0">' + row + '</div></summary>' +
+      '<div class="topic-children">' + childrenHtml + '</div>' +
+    '</details>';
+  }
+
+  function renderTopics() {
+    var progress = readProgress();
+    var stats = allNodeStats(TREE, progress);
+    return '<h1 style="font-size:20px;margin:4px 0 0">Themen</h1>' +
+      '<div class="card topic-tree-card">' + TREE.map(function (n) { return topicNodeHtml(n, stats, 0); }).join("") + '</div>';
+  }
+
+  function renderSettings() {
+    var stats = readStats();
+    return '<h1 style="font-size:20px;margin:4px 0 0">Einstellungen</h1>' +
+      '<div class="card settings-card">' +
+        '<div class="field"><label for="f-daily-goal">Tagesziel (Karten pro Tag)</label>' +
+          '<input id="f-daily-goal" type="number" min="1" max="500" value="' + stats.daily_goal + '"/>' +
+          '<p class="field-hint">Steuert den Fortschrittsring auf dem Dashboard.</p></div>' +
+        '<div class="field"><label for="f-session-size">Karten pro Lernsession</label>' +
+          '<input id="f-session-size" type="number" min="5" max="200" value="' + stats.session_size + '"/>' +
+          '<p class="field-hint">Wie viele Karten eine Session maximal lädt (fällige zuerst, dann neue).</p></div>' +
+        '<div style="display:flex;align-items:center;gap:12px">' +
+          '<button class="btn btn-primary" data-save-settings="1">Speichern</button>' +
+          '<span class="saved-tag" data-saved-tag hidden>Gespeichert ✓</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="card">' +
+        '<p class="danger-title">Fortschritt zurücksetzen</p>' +
+        '<p class="field-hint" style="margin-bottom:14px">Löscht Streak, XP und alle Wiederholungen in diesem Browser. Die Karten selbst bleiben erhalten.</p>' +
+        (confirmingReset ?
+          '<div style="display:flex;flex-direction:column;gap:10px">' +
+            '<p style="font-size:14px;font-weight:700;color:var(--danger-strong);margin:0">Wirklich zurücksetzen?</p>' +
+            '<div style="display:flex;align-items:center;gap:12px">' +
+              '<button class="btn btn-danger" data-confirm-reset="1">Ja, zurücksetzen</button>' +
+              '<button class="btn btn-ghost" data-cancel-reset="1">Abbrechen</button>' +
+            '</div>' +
+          '</div>'
+        : '<button class="btn btn-danger" data-reset-progress="1">Fortschritt zurücksetzen</button>') +
+      '</div>';
+  }
+
+  function handleSaveSettings() {
+    var goalInput = document.getElementById("f-daily-goal");
+    var sizeInput = document.getElementById("f-session-size");
+    var stats = readStats();
+    stats.daily_goal = Math.max(1, Math.min(500, Number(goalInput.value) || 20));
+    stats.session_size = Math.max(5, Math.min(200, Number(sizeInput.value) || 40));
+    writeStats(stats);
+    var tag = document.querySelector("[data-saved-tag]");
+    if (tag) {
+      tag.hidden = false;
+      setTimeout(function () { tag.hidden = true; }, 2500);
+    }
+  }
+
+  var confirmingReset = false;
+  function handleAskResetConfirm() {
+    confirmingReset = true;
+    render();
+  }
+  function handleCancelReset() {
+    confirmingReset = false;
+    render();
+  }
+  function handleResetProgress() {
+    resetProgress();
+    confirmingReset = false;
+    route = "dashboard";
+    render();
+  }
+
+  var session = null;
+
+  function startReview(topicId) {
+    var ids;
+    var nameMap = {};
+    flattenNames(TREE, nameMap);
+    if (topicId === "all") ids = Object.keys(nameMap);
+    else { var node = findNode(TREE, topicId); ids = node ? collectSubtreeIds(node) : []; }
+    var limit = readStats().session_size;
+    var cards = interleave(getDueCards(ids, limit));
+    session = {
+      topicId: topicId, queue: cards, total: cards.length, revealed: false, selectedChoice: null,
+      typedValue: null, reviewedCount: 0, xpEarned: 0, nameMap: nameMap, streakBumped: false,
+      lastAction: null, backRoute: topicId === "all" ? "dashboard" : "topics"
+    };
+    if (cards.length > 0 && !session.streakBumped) { bumpStreak(); session.streakBumped = true; }
+    route = "review"; routeParam = topicId;
+    render();
+  }
+
+  function undoBtnHtml(small) {
+    if (!session || !session.lastAction) return "";
+    if (small) {
+      return '<button class="icon-btn" data-undo="1" aria-label="Letzte Bewertung rückgängig machen" title="Letzte Bewertung rückgängig machen">' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 1 1 2 4.9"/><path d="M3 4v6h6"/></svg></button>';
+    }
+    return '<button class="btn btn-ghost" data-undo="1">&#8630; Letzte rückgängig</button>';
+  }
+
+  function renderReview() {
+    if (!session) return "";
+    var current = session.queue[0];
+    var backBtn = '<button class="icon-btn" data-nav="' + session.backRoute + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>';
+
+    if (session.total === 0) {
+      return '<div class="end-screen"><div class="end-emoji">&#127881;</div><div class="end-title">Alles erledigt!</div>' +
+        '<div class="end-sub">Für diesen Bereich sind aktuell keine Karten fällig.</div>' +
+        '<button class="btn btn-secondary" data-nav="' + session.backRoute + '">Zurück</button></div>';
+    }
+    if (!current) {
+      return '<div class="end-screen"><div class="end-emoji">&#9989;</div><div class="end-title">Session geschafft!</div>' +
+        '<div class="end-sub">' + session.reviewedCount + ' Karten wiederholt &middot; <b style="color:var(--warn-text)">+' + session.xpEarned + ' XP</b></div>' +
+        '<div style="display:flex;align-items:center;gap:12px">' +
+        '<button class="btn btn-primary" data-nav="' + session.backRoute + '">Zurück</button>' + undoBtnHtml(false) +
+        '</div></div>';
+    }
+
+    var pct = Math.round(session.reviewedCount / Math.max(session.total, session.reviewedCount + session.queue.length) * 100);
+    var topName = session.nameMap[current.topic_id] || "";
+    var html = '<div class="review-top">' + backBtn +
+      '<div class="review-progress"><div style="width:' + pct + '%"></div></div>' +
+      '<span class="review-count">' + session.queue.length + ' übrig</span>' + undoBtnHtml(true) + '</div>';
+
+    if (current.card_type === "hotspot") {
+      html += renderHotspotCard(current, topName);
+    } else if (current.card_type === "typed") {
+      html += renderTypedCard(current, topName);
+    } else {
+      html += renderFlipCard(current, topName);
+    }
+
+    html += '<div style="min-height:60px">';
+    if (session.revealed) {
+      html += '<div class="rating-grid">' +
+        '<button class="rate-btn rate-again" data-rate="nochmal">Nochmal</button>' +
+        '<button class="rate-btn rate-hard" data-rate="schwer">Schwer</button>' +
+        '<button class="rate-btn rate-good" data-rate="gut">Gut</button>' +
+        '<button class="rate-btn rate-easy" data-rate="leicht">Leicht</button>' +
+      '</div>';
+    } else if (current.card_type === "basic") {
+      html += '<button class="btn btn-dark btn-block" data-flip="1">Antwort aufdecken</button>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function renderFlipCard(card, topName) {
+    var img = card.image_url ? '<figure class="img-wrap" style="margin:14px 0 0"><img src="' + esc(card.image_url) + '" alt=""/></figure>' +
+      (card.image_source ? '<p class="img-credit">' + esc(card.image_source) + (card.image_license ? " &middot; " + esc(card.image_license) : "") + '</p>' : "") : "";
+    return '<div class="perspective">' +
+      '<div class="flip-card' + (session.revealed ? " revealed" : "") + '" data-flip-card="1">' +
+        '<div class="flip-face front"><div class="flip-face-inner">' +
+          (topName ? '<span class="topic-tag">' + esc(topName) + '</span>' : "") +
+          '<div class="q-text">' + esc(card.question) + '</div>' +
+          '<p class="tap-hint">Tippen zum Aufdecken</p>' +
+        '</div></div>' +
+        '<div class="flip-face back"><div class="flip-face-inner">' +
+          '<span class="topic-tag answer">Antwort</span>' +
+          '<div class="a-text">' + esc(card.answer) + '</div>' +
+          (card.elaboration ? '<p class="elab-text">' + esc(card.elaboration) + '</p>' : "") +
+          img +
+        '</div></div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderHotspotCard(card, topName) {
+    var choices = session.shuffledChoices;
+    var markerHtml = '';
+    if (card.hotspot_x != null && card.hotspot_y != null) {
+      markerHtml = '<div class="hotspot-marker" style="left:' + (card.hotspot_x*100) + '%;top:' + (card.hotspot_y*100) + '%">' +
+        '<span class="ping"></span><span class="dot"></span></div>';
+    }
+    var choicesHtml = choices.map(function (choice) {
+      var isCorrect = choice === card.answer;
+      var isSelected = choice === session.selectedChoice;
+      var cls = "choice-btn";
+      if (session.revealed && isCorrect) cls += " correct";
+      else if (session.revealed && isSelected && !isCorrect) cls += " wrong";
+      return '<button class="' + cls + '" data-choice="' + esc(choice) + '" ' + (session.selectedChoice ? "disabled" : "") + '>' +
+        esc(choice) + (session.revealed && isCorrect ? " &#10003;" : (session.revealed && isSelected ? " &#10007;" : "")) +
+      '</button>';
+    }).join("");
+    return '<div class="hotspot-card">' +
+      (topName ? '<span class="topic-tag">' + esc(topName) + '</span>' : "") +
+      '<p class="hotspot-q">' + esc(card.question || "Welche Struktur ist markiert?") + '</p>' +
+      '<div class="hotspot-img-wrap">' + (card.image_url ? '<img src="' + esc(card.image_url) + '" alt=""/>' : "") + markerHtml + '</div>' +
+      '<div class="choice-list">' + choicesHtml + '</div>' +
+      (session.revealed && card.elaboration ? '<p class="elab-text" style="margin-top:0">' + esc(card.elaboration) + '</p>' : "") +
+      (session.revealed && card.image_source ? '<p class="img-credit">' + esc(card.image_source) + (card.image_license ? " &middot; " + esc(card.image_license) : "") + '</p>' : "") +
+    '</div>';
+  }
+
+  function renderTypedCard(card, topName) {
+    var body;
+    if (session.typedValue === null) {
+      body = '<form data-type-form="1" style="display:flex;flex-direction:column;gap:10px">' +
+        '<input class="type-input" type="text" id="type-answer-input" placeholder="Antwort eintippen …" autocomplete="off" autofocus/>' +
+        '<button type="submit" class="btn btn-dark">Prüfen</button>' +
+      '</form>';
+    } else {
+      var runs = diffChars(session.typedValue, card.answer);
+      var diffHtml = runs.map(function (run) {
+        if (run.type === "equal") return esc(run.value);
+        if (run.type === "delete") return '<span class="diff-del">' + esc(run.value) + '</span>';
+        return '<span class="diff-ins">' + esc(run.value) + '</span>';
+      }).join("");
+      body = '<div style="display:flex;flex-direction:column;gap:4px">' +
+        '<span class="diff-label">Deine Antwort im Vergleich:</span>' +
+        '<p class="diff-text">' + diffHtml + '</p>' +
+        (isExactMatch(session.typedValue, card.answer) ? '<span class="diff-exact">Exakt richtig ✓</span>' : '') +
+      '</div>';
+    }
+    return '<div class="type-card">' +
+      (topName ? '<span class="topic-tag">' + esc(topName) + '</span>' : "") +
+      '<p class="type-q">' + esc(card.question) + '</p>' +
+      body +
+      (session.revealed && card.elaboration ? '<p class="elab-text" style="margin-top:0">' + esc(card.elaboration) + '</p>' : "") +
+    '</div>';
+  }
+
+  function handleFlip() {
+    if (!session || session.revealed) return;
+    session.revealed = true;
+    render();
+  }
+  function handleChoice(choice) {
+    if (!session || session.selectedChoice) return;
+    session.selectedChoice = choice;
+    session.revealed = true;
+    render();
+  }
+  function handleTypeSubmit(value) {
+    if (!session || session.typedValue !== null || !value || !value.trim()) return;
+    session.typedValue = value;
+    session.revealed = true;
+    render();
+  }
+  function handleRate(rating) {
+    if (!session) return;
+    var current = session.queue[0];
+    if (!current) return;
+    var result = rateCard(current, rating);
+    session.xpEarned += result.xpGained;
+    session.reviewedCount += 1;
+    session.lastAction = { card: current, rating: rating, xpGained: result.xpGained };
+    var rest = session.queue.slice(1);
+    var offset = requeueOffset(rating);
+    if (offset !== null) {
+      var updated = {}; for (var k in current) updated[k] = current[k];
+      updated.progress = result.progress;
+      var insertAt = Math.min(offset, rest.length);
+      rest.splice(insertAt, 0, updated);
+    }
+    session.queue = rest;
+    session.revealed = false;
+    session.selectedChoice = null;
+    session.typedValue = null;
+    render();
+  }
+  function handleUndo() {
+    if (!session || !session.lastAction) return;
+    var action = session.lastAction;
+    undoCard(action.card.id, action.card.progress, action.xpGained);
+    session.xpEarned -= action.xpGained;
+    session.reviewedCount -= 1;
+    var rest = session.queue.slice();
+    if (requeueOffset(action.rating) !== null) {
+      var dupIdx = rest.findIndex(function (c) { return c.id === action.card.id; });
+      if (dupIdx !== -1) rest.splice(dupIdx, 1);
+    }
+    rest.unshift(action.card);
+    session.queue = rest;
+    session.revealed = false;
+    session.selectedChoice = null;
+    session.typedValue = null;
+    session.lastAction = null;
+    render();
+  }
+
+  function render() {
+    var body;
+    if (route === "dashboard") body = renderDashboard();
+    else if (route === "topics") body = renderTopics();
+    else if (route === "settings") body = renderSettings();
+    else if (route === "review") {
+      if (session && session.queue[0] && session.queue[0].card_type === "hotspot" && !session.shuffledChoicesFor) {
+        session.shuffledChoices = shuffle(session.queue[0].choices || []);
+        session.shuffledChoicesFor = session.queue[0].id;
+      }
+      if (session && session.queue[0] && session.shuffledChoicesFor !== session.queue[0].id) {
+        session.shuffledChoices = shuffle((session.queue[0].choices) || []);
+        session.shuffledChoicesFor = session.queue[0].id;
+      }
+      body = renderReview();
+    }
+    else body = renderDashboard();
+
+    var showChrome = route !== "review" || !session || session.queue.length === 0 || !!session.total === false;
+    var html = renderTopbar() + '<main>' + body + '</main>';
+    if (route !== "review") html += renderBottomNav();
+    el.innerHTML = html;
+  }
+
+  el.addEventListener("click", function (e) {
+    var navBtn = e.target.closest("[data-nav]");
+    if (navBtn) {
+      route = navBtn.getAttribute("data-nav");
+      session = route === "review" ? session : null;
+      confirmingReset = false;
+      render();
+      return;
+    }
+    var startBtn = e.target.closest("[data-start-review]");
+    if (startBtn) { startReview(startBtn.getAttribute("data-start-review")); return; }
+    var flipBtn = e.target.closest("[data-flip], [data-flip-card]");
+    if (flipBtn) { handleFlip(); return; }
+    var choiceBtn = e.target.closest("[data-choice]");
+    if (choiceBtn) { handleChoice(choiceBtn.getAttribute("data-choice")); return; }
+    var rateBtn = e.target.closest("[data-rate]");
+    if (rateBtn) { handleRate(rateBtn.getAttribute("data-rate")); return; }
+    var undoBtn = e.target.closest("[data-undo]");
+    if (undoBtn) { handleUndo(); return; }
+    var saveBtn = e.target.closest("[data-save-settings]");
+    if (saveBtn) { handleSaveSettings(); return; }
+    var resetBtn = e.target.closest("[data-reset-progress]");
+    if (resetBtn) { handleAskResetConfirm(); return; }
+    var confirmResetBtn = e.target.closest("[data-confirm-reset]");
+    if (confirmResetBtn) { handleResetProgress(); return; }
+    var cancelResetBtn = e.target.closest("[data-cancel-reset]");
+    if (cancelResetBtn) { handleCancelReset(); return; }
+  });
+
+  el.addEventListener("submit", function (e) {
+    var typeForm = e.target.closest("[data-type-form]");
+    if (typeForm) {
+      e.preventDefault();
+      var input = document.getElementById("type-answer-input");
+      handleTypeSubmit(input ? input.value : "");
+    }
+  });
+
+  fetch("spedition-data.json").then(function (r) { return r.json(); }).then(function (json) {
+    DATA = json;
+    TREE = buildTree(DATA.topics);
+    render();
+  }).catch(function (err) {
+    el.innerHTML = '<div class="loading-screen">Daten konnten nicht geladen werden.</div>';
+  });
+})();
+</script>
+
+</body></html>
